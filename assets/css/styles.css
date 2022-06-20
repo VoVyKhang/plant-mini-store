@@ -233,6 +233,22 @@ img{
     box-shadow: 0 1px 4px hsla(var(--hue), 4%, 15%, .1);
 }
 
+/* Active link */
+.active-link{
+    position: relative;
+    color: var(--first-color)
+}
+
+.active-link::after{
+    position: absolute;
+    content: '';
+    bottom: -0.5rem;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background-color: var(--first-color)
+}
+
 /* HOME */
 .home{
     padding: 3.5rem 0 2rem

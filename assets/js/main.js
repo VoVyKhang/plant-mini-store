@@ -1,4 +1,4 @@
-// Show menu
+// ===== Show menu =====
 const navMenu = document.getElementById('nav-menu')
 const navToggle = document.getElementById('nav-toggle')
 const navClose = document.getElementById('nav-close')
@@ -15,7 +15,7 @@ if(navClose){
     })
 }
 
-// Remove menu mobile
+// ===== Remove menu mobile =====
 const navLink = document.querySelectorAll('.nav__link')
 
 function linkAction() {
@@ -25,7 +25,7 @@ function linkAction() {
 
 navLink.forEach(navLinkElement => navLinkElement.addEventListener('click', linkAction))
 
-// Change background header
+// ===== Change background header =====
 function scrollHeader(){
     const header = document.getElementById('header')
 
@@ -38,7 +38,7 @@ function scrollHeader(){
 
 window.addEventListener('scroll', scrollHeader)
 
-// Questions accordion
+// ===== Questions accordion =====
 const accordionItems = document.querySelectorAll('.questions__item')
 
 accordionItems.forEach(item => {
@@ -67,4 +67,23 @@ const toggleItem = (item) => {
     }
 }
 
+// ===== Scroll sections active link =====
+const sections = document.querySelectorAll('section[id]')
+
+function scrollActive(){
+    const scrollY = window.pageYOffset
+
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight
+        const sectionTop = current.offsetTop - 58
+        const sectionId = current.getAttribute('id')
+
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+        }else{
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+        }
+    })
+}
+window.addEventListener('scroll', scrollActive)
 
